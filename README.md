@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+# Agenda de Celular
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um aplicativo de agenda de celular desenvolvido com React, TypeScript, Redux e Styled Components.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Cadastro de Novos Contatos: Adicione novos contatos à sua agenda, incluindo nome completo, endereço e telefone.
+- Remoção de Contatos: Remova contatos existentes da sua agenda.
+- Edição de Contatos: Atualize informações de contatos já cadastrados na sua agenda.
 
-## Expanding the ESLint configuration
+## Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Para executar este aplicativo localmente, você precisa ter o Node.js instalado na sua máquina.
 
-- Configure the top-level `parserOptions` property like this:
+## Instalação
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Clone este repositório em sua máquina local:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   ```bash
+   git clone https://github.com/sergioj1123/Lista.git
+    ```
+2. Navegue até o diretório do projeto:
+
+   ```bash
+   cd Lista
+    ```
+3. Instale as dependências:
+   
+   ```bash
+   npm install
+   ```
+  
+## Como Executar
+
+Após a instalação das dependências, você pode iniciar o aplicativo com o seguinte comando:
+
+   ```bash
+   npm start
+   ```
+
+
+## Como Executar
+
+
+
+ Tecnologias Utilizadas:
+
+
+- React: Biblioteca JavaScript para construção de interfaces de usuário.
+- TypeScript: Superset do JavaScript que adiciona tipagem estática opcional.
+- Redux: Biblioteca para gerenciamento de estado da aplicação.
+- Styled Components: Biblioteca para estilização de componentes com CSS-in-JS.
+
+## Contribuindo
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue para relatar problemas ou sugerir melhorias. Se deseja contribuir diretamente, faça um fork do repositório e envie um pull request com suas alterações.
