@@ -1,9 +1,10 @@
+import AddButton from "../../components/addButton";
 import ContactList from "../../components/containers/ContactList";
 
 const Home = () => (
   <>
     <ContactList></ContactList>
-    <button>Add</button>
+    <AddButton></AddButton>
   </>
 );
 

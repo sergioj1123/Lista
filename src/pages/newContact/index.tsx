@@ -1,6 +1,8 @@
+import Form from "../../components/containers/Form";
+
 const NewContact = () => (
   <>
-    <h1>teste</h1>
+    <Form></Form>
   </>
 );
 

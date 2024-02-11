@@ -7,6 +7,11 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 76px;
+`;
+
+const PageTitle = styled.h1`
+  padding: 8px;
 `;
 
 const CardList = styled.ul`
@@ -26,7 +31,7 @@ const ContactList = () => {
 
   return (
     <Main>
-      <h1>Contact List</h1>
+      <PageTitle>Lista de Contatos</PageTitle>
       <CardList>
         {contactList.items.map((contact) => (
           <li key={contact.id}>
