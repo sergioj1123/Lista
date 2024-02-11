@@ -55,11 +55,18 @@ const contactSlice = createSlice({
     initialState,
     reducers: {
         remove: (state, action: PayloadAction<number>) => {
-            state.items = state.items.filter(contact => contact.id !== action.payload)
+            state.items = [
+                ...state.items.filter(contact => contact.id !== action.payload)
+            ]
+        },
+        edit: (state, action: PayloadAction<Contact>) => {
+            const contactIndex = state.items.findIndex(contact => contact.id === action.payload.id)
+
+            contactIndex >=0 && (state.items[contactIndex]=action.payload)
         }
     }
 })
 
-export const { remove } = contactSlice.actions
+export const { remove, edit } = contactSlice.actions
 
 export default contactSlice.reducer

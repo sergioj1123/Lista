@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import variables from "../../styles/variables";
-import { remove } from "../../store/reducers/contact";
+import { remove, edit } from "../../store/reducers/contact";
 import ContactClass from "../../models/contact";
 
 const Card = styled.div`
@@ -22,13 +22,31 @@ const Title = styled.h3`
   text-transform: capitalize;
 `;
 
-const Information = styled.p`
+const Label = styled.p`
   color: #8b8b8b;
+  font-weight: bold;
   font-size: 14px;
+  margin-top: 8px;
   line-height: 24px;
   font-family: "Roboto Mono", monospace;
+`;
+
+const Information = styled.textarea`
+  color: #8b8b8b;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  overflow: hidden;
+  max-height: 40px;
+  border-radius: 4px;
+  font-family: "Roboto Mono", monospace;
   padding: 8px;
-  border-bottom: 1px solid;
+  resize: none;
+  background-color: transparent;
+`;
+
+const InformationBigger = styled(Information)`
+  max-height: 60px;
 `;
 
 const ActionBar = styled.div`
@@ -59,22 +77,57 @@ const DeleteButton = styled(Button)`
 
 type Props = ContactClass;
 
-const Contact = ({ name, phone, email, id }: Props) => {
+const Contact = ({
+  name,
+  phone: phoneOriginal,
+  email: emailOriginal,
+  id,
+}: Props) => {
   const [editing, setEditing] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    phoneOriginal.length > 0 && setPhone(phoneOriginal);
+    emailOriginal.length > 0 && setEmail(emailOriginal);
+  }, [phoneOriginal, emailOriginal]);
+
+  function cancelEditing() {
+    setEditing(false);
+    setEmail(emailOriginal);
+    setPhone(phoneOriginal);
+  }
 
   return (
     <Card>
       <Title>{name}</Title>
-      <Information>Número: {phone}</Information>
-      <Information>E-mail: {email}</Information>
+      <Label>Número:</Label>
+      <Information
+        value={phone}
+        onChange={(event) => setPhone(event.target.value)}
+        maxLength={14}
+        disabled={!editing}
+      ></Information>
+      <Label>E-mail:</Label>
+      <InformationBigger
+        disabled={!editing}
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        maxLength={40}
+      ></InformationBigger>
       <ActionBar>
         {editing ? (
           <>
-            <SaveButton>Salvar</SaveButton>
-            <DeleteButton onClick={() => setEditing(false)}>
-              Cancelar
-            </DeleteButton>
+            <SaveButton
+              onClick={() => {
+                dispatch(edit({ email, phone, id, name }));
+                setEditing(false);
+              }}
+            >
+              Salvar
+            </SaveButton>
+            <DeleteButton onClick={cancelEditing}>Cancelar</DeleteButton>
           </>
         ) : (
           <>
