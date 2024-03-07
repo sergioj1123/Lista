@@ -35,7 +35,7 @@ Para executar este aplicativo localmente, você precisa ter o Node.js instalado 
 Após a instalação das dependências, você pode iniciar o aplicativo com o seguinte comando:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
 
